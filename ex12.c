@@ -15,7 +15,6 @@ tem-se os seguintes dados:
 (e) Fa¸ca uma fun¸c˜ao que imprimir os dados do apartamento que tem o maior n´umero de
 moradores
 
-
 */
 #include <stdio.h>
 #include <stdlib.h>

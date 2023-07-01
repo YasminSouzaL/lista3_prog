@@ -19,34 +19,38 @@ typedef struct {
     float temp_max;
 } Planeta;
 
-int main() {
+void gravar_dados() {
+    Planeta p;
     FILE *arq;
-    Planeta *planetas;
-    int i;
-
-    arq = fopen("planetas.txt", "r");
-
+    arq = fopen("planetas.txt", "a");
     if (arq == NULL) {
         printf("Erro ao abrir o arquivo\n");
         exit(1);
     }
-
-    planetas = (Planeta *) malloc(4 * sizeof(Planeta));
-
-    for (i = 0; i < 4; i++) {
-        fscanf(arq, "%s %f %f %f", planetas[i].nome, &planetas[i].distancia, &planetas[i].temp_min, &planetas[i].temp_max);
-    }
-
-    for (i = 0; i < 4; i++) {
-        printf("Planeta: %s\n", planetas[i].nome);
-        printf("Distancia: %.2f\n", planetas[i].distancia);
-        printf("Temperatura minima: %.2f\n", planetas[i].temp_min);
-        printf("Temperatura maxima: %.2f\n", planetas[i].temp_max);
-        printf("\n");
-    }
-
+    printf("Digite o nome do planeta: ");
+    scanf("%s", p.nome);
+    printf("Digite a distancia do planeta: ");
+    scanf("%f", &p.distancia);
+    printf("Digite a temperatura minima do planeta: ");
+    scanf("%f", &p.temp_min);
+    printf("Digite a temperatura maxima do planeta: ");
+    scanf("%f", &p.temp_max);
+    fprintf(arq, "%s %f %f %f\n", p.nome, p.distancia, p.temp_min, p.temp_max);
     fclose(arq);
-    free(planetas);
+}
 
+int main() {
+    Planeta p;
+    FILE *arq;
+    gravar_dados();
+    arq = fopen("planetas.txt", "r");
+    if (arq == NULL) {
+        printf("Erro ao abrir o arquivo\n");
+        exit(1);
+    }
+    while (fscanf(arq, "%s %f %f %f", p.nome, &p.distancia, &p.temp_min, &p.temp_max) == 4) {
+        printf("%s %f %f %f\n", p.nome, p.distancia, p.temp_min, p.temp_max);
+    }
+    fclose(arq);
     return 0;
 }
