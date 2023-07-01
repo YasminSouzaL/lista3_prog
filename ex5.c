@@ -15,11 +15,8 @@ int mult(int a, int b) {
 int main() {
     int a, b;
 
-    printf("Digite o valor de a: ");
-    scanf("%d", &a);
-
-    printf("Digite o valor de b: ");
-    scanf("%d", &b);
+    printf("Digite o valor de A e b":);
+    scanf("%d %d", &a, &b);
 
     printf("Multiplicacao de %d por %d: %d\n", a, b, mult(a, b));
 
