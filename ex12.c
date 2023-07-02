@@ -18,6 +18,7 @@ moradores
 */
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct {
     char nome[15];
@@ -69,9 +70,11 @@ void maiorNumeroMoradores(Apartamento *apartamentos, int n) {
 }
 
 
-int main(){
+int main() {
     Apartamento *apartamentos;
     int n, i;
+    float area, total;
+    char nome[15];
 
     printf("Digite o numero de apartamentos: ");
     scanf("%d", &n);
@@ -81,25 +84,23 @@ int main(){
     for (i = 0; i < n; i++) {
         printf("Digite o nome do responsavel: ");
         scanf("%s", apartamentos[i].nome);
-
         printf("Digite o numero do apartamento: ");
         scanf("%d", &apartamentos[i].numero);
-
         printf("Digite a area do apartamento: ");
         scanf("%f", &apartamentos[i].area);
-
         printf("Digite o numero de moradores: ");
         scanf("%d", &apartamentos[i].moradores);
-
         printf("Digite o valor a ser pago no mes: ");
         scanf("%f", &apartamentos[i].valor);
     }
 
-    printf("Area total do condominio: %.2f\n", areaTotal(apartamentos, n));
-    printf("Total arrecadado do condominio: %.2f\n", totalArrecadado(apartamentos, n));
-    maiorNumeroMoradores(apartamentos, n);
+    area = areaTotal(apartamentos, n);
+    total = totalArrecadado(apartamentos, n);
 
-    free(apartamentos);
+    printf("Area total do condominio: %.2f\n", area);
+    printf("Total arrecadado: %.2f\n", total);
+
+    maiorNumeroMoradores(apartamentos, n);
 
     return 0;
 }
