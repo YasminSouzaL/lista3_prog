@@ -18,14 +18,13 @@ int main() {
     }
 
     printf("Digite o caracter: ");
-    scanf("%c", &caracter);
+    scanf(" %c", &caracter); 
 
-    fscanf(arq, "%c", &c);
     while (!feof(arq)) {
+        fscanf(arq, "%c", &c);
         if (c == caracter) {
             count++;
         }
-        fscanf(arq, "%c", &c);
     }
 
     printf("O caracter %c aparece %d vezes no arquivo\n", caracter, count);
