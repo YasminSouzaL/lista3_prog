@@ -5,7 +5,6 @@ com o caractere ’0’.
  Feche o arquivo.
 Agora, abra e leia o arquivo, caractere por caractere, e escreva na tela todos os caracteres
 armazenados.*/
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -21,11 +20,11 @@ int main() {
     }
 
     printf("Digite os caracteres: ");
-    scanf("%c", &c);
+    scanf(" %c", &c);  // Adiciona um espaço antes do %c para ignorar espaços em branco
 
     while (c != '0') {
         fprintf(arq, "%c", c);
-        scanf("%c", &c);
+        scanf(" %c", &c);  // Adiciona um espaço antes do %c para ignorar espaços em branco
     }
 
     fclose(arq);
@@ -38,10 +37,8 @@ int main() {
     }
 
     printf("Caracteres: ");
-    fscanf(arq, "%c", &c);
-    while (!feof(arq)) {
+    while (fscanf(arq, "%c", &c) == 1) {
         printf("%c", c);
-        fscanf(arq, "%c", &c);
     }
     printf("\n");
 
