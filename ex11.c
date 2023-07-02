@@ -18,7 +18,7 @@ supermercado.*/
 typedef struct {
     char nome[15];
     char setor;
-    int quantidade;
+    int quant;
     float preco;
 } Produto;
 
@@ -39,7 +39,7 @@ float capitalInvestido(Produto *estoque, int n) {
     float capital = 0;
 
     for (i = 0; i < n; i++) {
-        capital += estoque[i].quantidade * estoque[i].preco;
+        capital += estoque[i].quant * estoque[i].preco;
     }
 
     return capital;
@@ -63,7 +63,7 @@ int main() {
         scanf(" %c", &estoque[i].setor);
 
         printf("Digite a quantidade do produto: ");
-        scanf("%d", &estoque[i].quantidade);
+        scanf("%d", &estoque[i].quant);
 
         printf("Digite o preco do produto: ");
         scanf("%f", &estoque[i].preco);
